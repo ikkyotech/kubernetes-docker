@@ -7,19 +7,20 @@ Kubernetes running within docker
 
 1. from registry
    ```
-   $ alias start_master="docker rm kubernetes; docker run --privileged -d --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/log fandekasp/kubernetes-docker"
+   $ alias start_master="docker rm -f kubernetes; docker run --privileged -d --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/tmp fandekasp/kubernetes-docker"
    ```
 
 2. build locally
    ```
    $ cd master/
    $ docker build -t "kubernetes" .
-   $ alias start_master="docker run --privileged -ti --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/log kubernetes"
+   $ alias start_master="docker rm -f kubernetes; docker run --privileged -ti --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/tmp kubernetes"
    ```
 
 3. start kubernetes
    ```
    $ start_master
+   $ multitail --mergeall -iw "/var/log/kubernetes/*.log" 2
    ```
 
 # Query the api with kubecfg
