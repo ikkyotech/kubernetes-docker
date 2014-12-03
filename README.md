@@ -7,7 +7,7 @@ Kubernetes running within docker
 
 1. from registry
    ```
-   $ alias start_master="docker run --privileged -ti --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/log fandekasp/kubernetes-docker"
+   $ alias start_master="docker rm kubernetes; docker run --privileged -d --net='host' --name='kubernetes' -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -v /var/log/kubernetes:/log fandekasp/kubernetes-docker"
    ```
 
 2. build locally
