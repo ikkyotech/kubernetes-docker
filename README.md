@@ -46,8 +46,8 @@ $ CFG_DIR="$(pwd)/cfg/"
 3. start kubecfg
    ```
    $ kube --help
-   $ kube list /pods
-   $ kube -c /cfg/yourfile.json create pods
+   $ kube cfg -c /cfg/yourfile.json create pods
+   $ kube ctl --watch get events
    ```
 
    **Note:** When specifying a config file with -c, keep in mind that those
