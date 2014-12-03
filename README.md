@@ -46,4 +46,8 @@ $ CFG_DIR="$(pwd)/cfg/"
    ```
    $ kube --help
    $ kube list /pods
+   $ kube -c /cfg/yourfile.json create pods
    ```
+
+   **Note:** When specifying a config file with -c, keep in mind that those
+   config files are in `/cfg/` in the kube container.
